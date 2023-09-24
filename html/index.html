@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main class="container">
+      <section class="sidebar">
+        <div class="steps">
+          <div class="step__1 step">
+            <div class="step__num active">1</div>
+            <div class="step__info">
+              <p class="step__subtitle">Step 1</p>
+              <h6 class="step__title">YOUR INFO</h6>
+            </div>
+          </div>
+          <div class="step__2 step">
+            <div class="step__num">2</div>
+            <div class="step__info">
+              <p class="step__subtitle">Step 2</p>
+              <h6 class="step__title">SELECT PLAN</h6>
+            </div>
+          </div>
+          <div class="step__3 step">
+            <div class="step__num">3</div>
+            <div class="step__info">
+              <p class="step__subtitle">Step 3</p>
+              <h6 class="step__title">ADD-ONS</h6>
+            </div>
+          </div>
+          <div class="step__4 step">
+            <div class="step__num">4</div>
+            <div class="step__info">
+              <p class="step__subtitle">Step 4</p>
+              <h6 class="step__title">SUMMARY</h6>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="picks__container">
+        <div class="personal__info-container">
+          <div class="personal__info-title-container">
+            <h4 class="personal__info-title">Personal Info</h4>
+            <p class="personal__info-subtitle">
+              Please provide your name, email address, and phone number.
+            </p>
+          </div>
+          <div class="personal__info-inputs">
+            <form class="form">
+              <label class="form__label" for="nameInput">Name</label>
+              <input
+                class="form__input"
+                type="text"
+                id="nameInput"
+                placeholder="e.g Stephen King"
+                required
+              />
+              <label class="form__label" for="emailInput">Email Address</label>
+              <input
+                class="form__input"
+                type="email"
+                id="emailInput"
+                placeholder="e.g stephenking@gmail.com"
+                required
+              />
+              <label class="form__label" for="phone">Phone</label>
+              <input
+                class="form__input"
+                type="phone"
+                id="phoneInput"
+                placeholder="e.g +1 234 567 890"
+                required
+              />
+            </form>
+          </div>
+          <button class="next__step-btn">Next Step</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
