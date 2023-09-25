@@ -1,0 +1,84 @@
+@import "./_variables.scss";
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.finish__container {
+  background: $Light-gray;
+  border-radius: 10px;
+  padding: 20px;
+  //   display: grid;
+  //   grid-template-columns: repeat(2, 1fr);
+}
+.finish {
+  &__plan {
+    @include flex-between;
+
+    border-bottom: 0.5px solid $Cool-gray;
+    padding-bottom: 20px;
+
+    &-title {
+      margin: 0;
+      color: $Marine-blue;
+      font-weight: 700;
+      font-size: 19px;
+    }
+    &-change {
+      margin: 0;
+      padding-top: 10px;
+      opacity: 0.7;
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+      cursor: pointer;
+      &:hover {
+        opacity: 1;
+      }
+    }
+    &-price {
+      color: $Marine-blue;
+      font-weight: 700;
+      font-size: 17px;
+    }
+  }
+  &__price {
+    color: $Marine-blue;
+    font-weight: 400;
+    font-size: 16px;
+  }
+}
+.online__service {
+  &-container {
+    @include flex-between;
+  }
+  &-title {
+    color: $Cool-gray;
+    font-size: 17px;
+  }
+}
+.storage {
+  &__container {
+    @include flex-between;
+  }
+  &__title {
+    color: $Cool-gray;
+    font-size: 17px;
+  }
+}
+.total {
+  padding: 20px;
+  &__container {
+    @include flex-between;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 20px;
+    color: $Purplish-blue;
+  }
+  &__title {
+    color: $Cool-gray;
+    font-size: 17px;
+  }
+}

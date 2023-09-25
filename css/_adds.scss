@@ -1,0 +1,85 @@
+@import "./_variables.scss";
+.add {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: 0.5px solid $Cool-gray;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  user-select: none;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+  &__info {
+    padding: 15px 0;
+    margin-top: 8px;
+  }
+  &__title {
+    font-size: 16px;
+    color: $Marine-blue;
+    font-weight: 700;
+    margin: 0;
+  }
+  &__subtitle {
+    margin-top: 10px;
+    opacity: 0.5;
+  }
+  &__price {
+    color: $Purplish-blue;
+    font-weight: 700;
+  }
+  input {
+    border: 1px solid $Light-blue;
+  }
+}
+.checkbox-style {
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+}
+.checkbox__checkmark {
+  position: absolute;
+  top: 35%;
+  left: 20px;
+  height: 25px;
+  width: 25px;
+  background-color: $Light-gray;
+  transition: 0.25s ease;
+  border-radius: 4px;
+  //check mark ( OK )
+  &::after {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid $White;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: opacity 0.1s ease;
+  }
+}
+.checkbox-style input:checked ~ .checkbox__checkmark {
+  background-color: $Purplish-blue;
+}
+.checkbox-style input:checked ~ .checkbox__checkmark:after {
+  opacity: 1;
+}
+// .checkbox-style:hover input ~ .checkbox__checkmark {
+//   background-color: inherit;
+//   border: 1px solid $Cool-gray;
+// }
+// .checkbox-style:hover input:checked ~ .checkbox__checkmark {
+//   background-color: #f7cb15;
+// }

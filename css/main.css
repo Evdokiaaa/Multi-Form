@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
 .plans {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -72,6 +74,168 @@
   cursor: pointer;
 }
 
+.add {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: 0.5px solid hsl(231, 11%, 63%);
+  margin-bottom: 20px;
+  border-radius: 10px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.add__container {
+  display: flex;
+  flex-direction: column;
+}
+.add__info {
+  padding: 15px 0;
+  margin-top: 8px;
+}
+.add__title {
+  font-size: 16px;
+  color: hsl(213, 96%, 18%);
+  font-weight: 700;
+  margin: 0;
+}
+.add__subtitle {
+  margin-top: 10px;
+  opacity: 0.5;
+}
+.add__price {
+  color: hsl(243, 100%, 62%);
+  font-weight: 700;
+}
+.add input {
+  border: 1px solid hsl(206, 94%, 87%);
+}
+
+.checkbox-style {
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+}
+.checkbox-style input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkbox__checkmark {
+  position: absolute;
+  top: 35%;
+  left: 20px;
+  height: 25px;
+  width: 25px;
+  background-color: hsl(229, 24%, 87%);
+  transition: 0.25s ease;
+  border-radius: 4px;
+}
+.checkbox__checkmark::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 4px;
+  width: 5px;
+  height: 10px;
+  border: solid hsl(0, 0%, 100%);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+
+.checkbox-style input:checked ~ .checkbox__checkmark {
+  background-color: hsl(243, 100%, 62%);
+}
+
+.checkbox-style input:checked ~ .checkbox__checkmark:after {
+  opacity: 1;
+}
+
+.finish__container {
+  background: hsl(229, 24%, 87%);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.finish__plan {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 0.5px solid hsl(231, 11%, 63%);
+  padding-bottom: 20px;
+}
+.finish__plan-title {
+  margin: 0;
+  color: hsl(213, 96%, 18%);
+  font-weight: 700;
+  font-size: 19px;
+}
+.finish__plan-change {
+  margin: 0;
+  padding-top: 10px;
+  opacity: 0.7;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+.finish__plan-change:hover {
+  opacity: 1;
+}
+.finish__plan-price {
+  color: hsl(213, 96%, 18%);
+  font-weight: 700;
+  font-size: 17px;
+}
+.finish__price {
+  color: hsl(213, 96%, 18%);
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.online__service-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.online__service-title {
+  color: hsl(231, 11%, 63%);
+  font-size: 17px;
+}
+
+.storage__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.storage__title {
+  color: hsl(231, 11%, 63%);
+  font-size: 17px;
+}
+
+.total {
+  padding: 20px;
+}
+.total__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.total__price {
+  font-weight: 700;
+  font-size: 20px;
+  color: hsl(243, 100%, 62%);
+}
+.total__title {
+  color: hsl(231, 11%, 63%);
+  font-size: 17px;
+}
+
 body {
   font-family: "Ubuntu", sans-serif;
   font-size: 16px;
@@ -130,6 +294,7 @@ body {
   align-items: center;
   justify-content: center;
   align-self: end;
+  cursor: pointer;
 }
 
 .picks__container {
@@ -215,8 +380,4 @@ body {
   background: hsl(206, 94%, 87%);
   color: hsl(213, 96%, 18%);
   border: none;
-}
-
-.hidden {
-  display: none;
 }/*# sourceMappingURL=main.css.map */

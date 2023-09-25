@@ -1,5 +1,7 @@
 @use "variables.scss";
 @import "plans.scss";
+@import "adds.scss";
+@import "finish.scss";
 
 body {
   font-family: "Ubuntu", sans-serif;
@@ -61,6 +63,7 @@ body {
     align-items: center;
     justify-content: center;
     align-self: end;
+    cursor: pointer;
   }
 }
 //for btn
@@ -146,9 +149,9 @@ body {
   color: variables.$Marine-blue;
   border: none;
 }
-.hidden {
-  display: none;
-}
+// .hidden {
+//   display: none;
+// }
 
 //Mixins: Mixins helps to make a set of CSS properties reusable i.e. it saves one code and use it again and again. It can be included in other CSS rules by using the @include directive.
 
