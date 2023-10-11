@@ -3,6 +3,11 @@
 @import "adds.scss";
 @import "finish.scss";
 
+@mixin flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 body {
   font-family: "Ubuntu", sans-serif;
   font-size: 16px;
@@ -68,7 +73,7 @@ body {
 }
 //for btn
 
-.right__block{
+.right__block {
   position: relative;
 }
 
@@ -111,7 +116,8 @@ body {
     }
   }
 }
-.next__step-btn {
+.next__step-btn,
+.confirm__btn {
   position: absolute;
   bottom: 10%;
   right: 13%;
@@ -148,6 +154,9 @@ body {
   background: variables.$Light-blue;
   color: variables.$Marine-blue;
   border: none;
+}
+.flex {
+  @include flex;
 }
 // .hidden {
 //   display: none;
