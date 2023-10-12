@@ -1,5 +1,17 @@
 const btns = document.querySelectorAll(".step__num");
 
+const PRICE = {
+  plan: {
+    month: [9, 12, 15],
+    year: [90, 120, 150],
+  },
+  picks: {
+    month: [1, 2, 3],
+    year: [10, 20, 30],
+  },
+};
+//Тут цена, которую выбрали пользователь
+
 const prices = {
   totalPrice: 0,
   planPrice: 0,
@@ -134,10 +146,42 @@ function checkPage(counter) {
       break;
   }
 }
+let dateOfPlan = "month";
+//! Данную функцию изменить на рефакторинге
 function selectPlan() {
   const plans = document.querySelectorAll(".plan");
-  const planPrices = document.querySelectorAll(".plan__price");
+  let planPrices = document.querySelectorAll(".plan__price");
   let activePlan = null;
+  //!date
+  const date = document.querySelector(".checkbox__date");
+  date.addEventListener("click", () => {
+    date.checked ? (date.value = "year") : (date.value = "month");
+    dateOfPlan = date.value;
+    console.log(dateOfPlan);
+    planPrices = changeDate(date.value);
+
+    //fix shit below in future
+    const price = Array.from(planPrices).map((el) =>
+      parseInt(el.textContent.replace(/[^0-9]/g, ""))
+    );
+    plans.forEach((plan, i) =>
+      plan.addEventListener("click", () => {
+        if (activePlan) {
+          // Убераем активным элемент
+          activePlan.style.border = "1px solid hsl(231, 11%, 63%)";
+        }
+
+        if (prices.planPrice) {
+          prices.planPrice = 0;
+        }
+        prices.planPrice += price[i];
+        //* Делаем план активным
+        plan.style.border = "2px solid #5D3FD3";
+        activePlan = plan;
+      })
+    );
+  });
+  console.log(planPrices);
   const price = Array.from(planPrices).map((el) =>
     parseInt(el.textContent.replace(/[^0-9]/g, ""))
   );
@@ -162,7 +206,7 @@ function selectPlan() {
 function selectOdds() {
   const odd = document.querySelectorAll(".adds__checkbox");
   const pricesElement = document.querySelectorAll(".add__price");
-
+  changePicksDate(dateOfPlan);
   //TODO Можно price вынести в отдельный файл )
   const price = Array.from(pricesElement).map((el) =>
     parseInt(el.textContent.replace(/[^0-9]/g, ""))
@@ -212,7 +256,7 @@ function getSummary() {
   }
 
   prices.totalPrice = additionPriceTotal + prices.planPrice;
-  total.textContent = `${prices.totalPrice}/mo`;
+  total.textContent = `$${prices.totalPrice}/mo`;
 
   //console.log(prices.totalPrice);
 }
@@ -239,8 +283,37 @@ function createFinishAddition() {
     mainInfo.appendChild(mainInfoContainer);
     finish.appendChild(mainInfo);
   });
-
-  
 }
-//TODO Пофиксить баги, декомпозиция, назвать переменные нормально, улучшить код, пофиксить баги  в верстке. 
-//TODO Вместо ARCADE, на финальной странице, показывать ту карточку, которую выбрали 
+//TODO Пофиксить баги, декомпозиция, назвать переменные нормально, улучшить код, пофиксить баги  в верстке.
+//TODO Вместо ARCADE, на финальной странице, показывать ту карточку, которую выбрали
+function changeDate(date) {
+  console.log(date);
+  const prices = document.querySelectorAll(".plan__price");
+
+  if (date === "month") {
+    prices.forEach((price, i) => {
+      const item = PRICE.plan.month[i];
+      price.textContent = `$${item}/mo`;
+    });
+  } else {
+    prices.forEach((price, i) => {
+      const item = PRICE.plan.year[i];
+      price.textContent = `$${item}/yr`;
+    });
+  }
+  return prices;
+}
+function changePicksDate(date) {
+  const addPrices = document.querySelectorAll(".add__price");
+  if (date === "month") {
+    addPrices.forEach((price) => {
+      const item = PRICE.picks.month[i];
+      price.textContent = `$${item}/mo`;
+    });
+  } else {
+    addPrices.forEach((price, i) => {
+      const item = PRICE.picks.year[i];
+      price.textContent = `$${item}/mo`;
+    });
+  }
+}
