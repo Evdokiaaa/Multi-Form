@@ -2,6 +2,9 @@ const btns = document.querySelectorAll(".step__num");
 
 const PRICE = {
   plan: {
+    type: {
+      arcade: "$9/mo",
+    },
     month: [9, 12, 15],
     year: [90, 120, 150],
   },
@@ -10,6 +13,7 @@ const PRICE = {
     year: [10, 20, 30],
   },
 };
+
 //Тут цена, которую выбрали пользователь
 
 const prices = {
@@ -22,6 +26,8 @@ const activeBtn = {
   id: 1,
   isActive: true,
 };
+
+let userPlan = "Arcade";
 for (const btn of btns) {
   btn.addEventListener("click", () => {
     //удаляем класс у всех кнопок
@@ -178,6 +184,7 @@ function selectPlan() {
         //* Делаем план активным
         plan.style.border = "2px solid #5D3FD3";
         activePlan = plan;
+        userPlan = plan;
       })
     );
   });
@@ -199,6 +206,7 @@ function selectPlan() {
       //* Делаем план активным
       plan.style.border = "2px solid #5D3FD3";
       activePlan = plan;
+      userPlan = plan;
     })
   );
   //TODO ДОБАВИТЬ MONTLY/YEAR ШТУКУ
@@ -246,6 +254,17 @@ function checkFinish() {
   // const addsOnPrices = document.c;
 }
 function getSummary() {
+  const finishPlan = document.querySelector(".finish__plan");
+  const [planTitle, planPrice] = finishPlan.children;
+  console.log(planTitle, planPrice);
+  //Надо куда то активный план записать
+  console.log(userPlan);
+  //! все ок, сделать потом проверку чтобы юзер выбрал планиначе его не пустит дальше
+  planTitle.textContent =
+    userPlan.dataset.plan.charAt(0).toUpperCase() +
+    userPlan.dataset.plan.slice(1);
+  planPrice.textContent = `$${userPlan.dataset.price}/mo`;
+
   const total = document.querySelector(".total__price ");
   createFinishAddition();
   //const planPrice = document.querySelector(".");
@@ -306,14 +325,14 @@ function changeDate(date) {
 function changePicksDate(date) {
   const addPrices = document.querySelectorAll(".add__price");
   if (date === "month") {
-    addPrices.forEach((price) => {
+    addPrices.forEach((price, i) => {
       const item = PRICE.picks.month[i];
       price.textContent = `$${item}/mo`;
     });
   } else {
     addPrices.forEach((price, i) => {
       const item = PRICE.picks.year[i];
-      price.textContent = `$${item}/mo`;
+      price.textContent = `$${item}/yr`;
     });
   }
 }
